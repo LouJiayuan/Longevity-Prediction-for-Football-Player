@@ -1,0 +1,17 @@
+{
+  "primary_peak_ratio": 0.65,
+  "minimum_history_seasons": 2,
+  "player_season_rows": 148140,
+  "eligible_peak_comparisons": 89972,
+  "candidate_rows": 41823,
+  "confirmed_rows": 17491,
+  "first_confirmed_events": 8064,
+  "recovered_players_within_3yr": 1978,
+  "invalid_event_sequences": 0,
+  "threshold_event_counts_monotonic": true,
+  "adjusted_minutes_only": true,
+  "injury_data_season_start": 2013,
+  "injury_data_season_end": 2023,
+  "complete_career_peak_cohort_players": 18654,
+  "platform_or_comprehensive_targets_present": false
+}

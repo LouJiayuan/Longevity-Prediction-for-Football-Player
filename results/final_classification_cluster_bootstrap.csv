@@ -1,0 +1,5 @@
+horizon_years,comparison,n_players,mean_auc_difference,ci_lower_95,ci_upper_95,bootstrap_probability_difference_le_zero
+2,clinical_extended:xgboost minus age_only:logistic,3886,0.11257021216739227,0.0984689214660913,0.1260348630681517,0.000999000999000999
+2,clinical_extended:xgboost minus minutes_only:gradient_boosting,3886,0.2338058126352551,0.21630827437305383,0.2504894338239534,0.000999000999000999
+5,clinical_extended:xgboost minus age_only:logistic,3295,0.05840849360022442,0.044566831345060565,0.07275436933572123,0.000999000999000999
+5,clinical_extended:xgboost minus minutes_only:gradient_boosting,3295,0.17964073139270084,0.1570011340993818,0.2021600500470028,0.000999000999000999
