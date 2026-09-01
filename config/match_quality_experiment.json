@@ -1,0 +1,85 @@
+{
+  "model_season_start": 2000,
+  "model_season_end": 2025,
+  "canonical_start_season": 2012,
+  "reference_leagues": ["GB1", "ES1", "L1", "IT1", "FR1"],
+  "in_scope_domestic_leagues": [
+    "GB1",
+    "GB2",
+    "ES1",
+    "ES2",
+    "L1",
+    "L2",
+    "IT1",
+    "IT2",
+    "FR1",
+    "FR2",
+    "NL1",
+    "PO1",
+    "BE1"
+  ],
+  "opponent_alpha": 0.25,
+  "quality_beta": 0.08,
+  "elo_gap_scale": 400.0,
+  "quality_elo_scale": 200.0,
+  "final_multiplier_bounds": [0.65, 1.35],
+  "exclude_competition_types": ["national_team_competition"],
+  "custom_competitions": [
+    {
+      "competition_id": "EFD2",
+      "name": "English First Division (-2003/04)",
+      "competition_family": "domestic_league",
+      "country_name": "England",
+      "tier": 2
+    },
+    {
+      "competition_id": "GB2",
+      "name": "Championship",
+      "competition_family": "domestic_league",
+      "country_name": "England",
+      "tier": 2
+    },
+    {
+      "competition_id": "ES2",
+      "name": "LaLiga2",
+      "competition_family": "domestic_league",
+      "country_name": "Spain",
+      "tier": 2
+    },
+    {
+      "competition_id": "L2",
+      "name": "2. Bundesliga",
+      "competition_family": "domestic_league",
+      "country_name": "Germany",
+      "tier": 2
+    },
+    {
+      "competition_id": "IT2",
+      "name": "Serie B",
+      "competition_family": "domestic_league",
+      "country_name": "Italy",
+      "tier": 2
+    },
+    {
+      "competition_id": "FR2",
+      "name": "Ligue 2",
+      "competition_family": "domestic_league",
+      "country_name": "France",
+      "tier": 2
+    },
+    {
+      "competition_id": "CGB",
+      "name": "EFL Cup",
+      "competition_family": "domestic_cup",
+      "country_name": "England",
+      "tier": null
+    },
+    {
+      "competition_id": "FRC",
+      "name": "Coupe de France",
+      "competition_family": "domestic_cup",
+      "country_name": "France",
+      "tier": null
+    }
+  ]
+}

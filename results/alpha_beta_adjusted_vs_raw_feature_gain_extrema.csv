@@ -1,0 +1,5 @@
+horizon_years,extreme,alpha,beta,auc_gain_adjusted_minus_raw,adjusted_trajectory_auc,raw_trajectory_auc
+2,maximum_adjusted_minus_raw_auc_gain,0.25,0.04,0.0032382138656246173,0.8072032423437296,0.803965028478105
+2,minimum_adjusted_minus_raw_auc_gain,0.35,0.04,0.0004854774613103352,0.8051741286146904,0.8046886511533801
+5,maximum_adjusted_minus_raw_auc_gain,0.15,0.12,0.002394107179285454,0.7268212478804958,0.7244271407012104
+5,minimum_adjusted_minus_raw_auc_gain,0.3,0.06,-0.004512930017378736,0.714836347766142,0.7193492777835208

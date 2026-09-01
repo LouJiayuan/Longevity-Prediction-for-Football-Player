@@ -1,0 +1,191 @@
+{
+  "operational_ground_truth": "adjusted minutes below 65% of the positive prior peak for two adjacent seasons; event at second low season",
+  "modeling_leagues": [
+    "BE1",
+    "ES1",
+    "ES2",
+    "FR1",
+    "FR2",
+    "GB1",
+    "GB2",
+    "IT1",
+    "IT2",
+    "L1",
+    "L2",
+    "NL1",
+    "PO1"
+  ],
+  "player_season_rows": 148140,
+  "survival_landmark_rows": 83789,
+  "primary_cohort": "all eligible at-risk player-seasons",
+  "complete_career_peak_cohort_role": "sensitivity analysis only",
+  "injury_data_used": false,
+  "injury_exclusion_reason": "legacy injury CSV was a synthetic test fixture; reconstructed public sources were not sufficiently homogeneous for the locked panel",
+  "admissible_classification_feature_count": 54,
+  "horizons": [
+    2,
+    5
+  ],
+  "classification_models": [
+    "logistic",
+    "random_forest",
+    "gradient_boosting",
+    "xgboost",
+    "lightgbm"
+  ],
+  "survival_models": [
+    "cox_ph",
+    "weibull_aft",
+    "random_survival_forest",
+    "extra_survival_trees",
+    "gradient_boosting_survival"
+  ],
+  "classification_tasks": {
+    "confirmation": {
+      "dataset": "classification_confirmation_yearly.parquet",
+      "rows": 85135,
+      "complete_career_peak_rows": 51478,
+      "selected_feature_set": "age_minutes_elo",
+      "selected_models": {
+        "2": "random_forest",
+        "5": "gradient_boosting"
+      },
+      "selection_cache_signature": "0f36cac7fb8314f30eb3c048da1fc48a34e6a5698910df2e3db789dff28f8f7f"
+    },
+    "early_warning": {
+      "dataset": "classification_early_warning_yearly.parquet",
+      "rows": 55829,
+      "complete_career_peak_rows": 34510,
+      "selected_feature_set": "full_model",
+      "selected_models": {
+        "2": "random_forest",
+        "5": "xgboost"
+      },
+      "selection_cache_signature": "62dc2a5dbdbef159d8f468be11593ecc5cbbe625b8572336d1cefb028840b79c"
+    }
+  },
+  "feature_sets": {
+    "age_only": [
+      "age"
+    ],
+    "minutes_only": [
+      "final_weighted_minutes"
+    ],
+    "age_career": [
+      "age",
+      "age_sq",
+      "career_final_weighted_minutes",
+      "career_seasons"
+    ],
+    "age_plus_minutes": [
+      "age",
+      "age_sq",
+      "final_weighted_minutes",
+      "games_played",
+      "previous_season_observed",
+      "final_weighted_minutes_lag1",
+      "final_weighted_minutes_lag2",
+      "final_weighted_minutes_avg2yr",
+      "final_weighted_minutes_yoy",
+      "career_final_weighted_minutes",
+      "career_games_played",
+      "career_seasons",
+      "career_adjusted_minutes_per_season"
+    ],
+    "age_minutes_elo": [
+      "age",
+      "age_sq",
+      "final_weighted_minutes",
+      "games_played",
+      "previous_season_observed",
+      "final_weighted_minutes_lag1",
+      "final_weighted_minutes_lag2",
+      "final_weighted_minutes_avg2yr",
+      "final_weighted_minutes_yoy",
+      "career_final_weighted_minutes",
+      "career_games_played",
+      "career_seasons",
+      "career_adjusted_minutes_per_season",
+      "club_elo",
+      "club_rank_percentile",
+      "avg_match_quality_elo",
+      "avg_match_quality_weight",
+      "avg_opponent_elo_gap",
+      "avg_opponent_expected_score",
+      "avg_opponent_quality_weight",
+      "data_quality_score",
+      "elo_imputed_minutes_share"
+    ],
+    "full_model": [
+      "age",
+      "age_sq",
+      "height",
+      "final_weighted_minutes",
+      "games_played",
+      "previous_season_observed",
+      "final_weighted_minutes_lag1",
+      "final_weighted_minutes_lag2",
+      "final_weighted_minutes_avg2yr",
+      "final_weighted_minutes_yoy",
+      "career_final_weighted_minutes",
+      "career_games_played",
+      "career_seasons",
+      "career_adjusted_minutes_per_season",
+      "club_elo",
+      "club_rank_percentile",
+      "avg_match_quality_elo",
+      "avg_match_quality_weight",
+      "avg_opponent_elo_gap",
+      "avg_opponent_expected_score",
+      "avg_opponent_quality_weight",
+      "data_quality_score",
+      "elo_imputed_minutes_share",
+      "continental_cup_minutes_share",
+      "continental_qualifier_minutes_share",
+      "domestic_cup_minutes_share",
+      "domestic_league_minutes_share",
+      "playoff_minutes_share",
+      "super_cup_minutes_share",
+      "pos_AttackingMidfield",
+      "pos_CentralMidfield",
+      "pos_CentreBack",
+      "pos_Defender",
+      "pos_DefensiveMidfield",
+      "pos_Forward",
+      "pos_FullBack",
+      "pos_Goalkeeper",
+      "pos_Midfield",
+      "pos_Striker",
+      "pos_Unknown",
+      "pos_Winger",
+      "pos_AttackingMidfield_x_age",
+      "pos_CentralMidfield_x_age",
+      "pos_CentreBack_x_age",
+      "pos_Defender_x_age",
+      "pos_DefensiveMidfield_x_age",
+      "pos_Forward_x_age",
+      "pos_FullBack_x_age",
+      "pos_Goalkeeper_x_age",
+      "pos_Midfield_x_age",
+      "pos_Striker_x_age",
+      "pos_Unknown_x_age",
+      "pos_Winger_x_age",
+      "age_x_career_adjusted_minutes"
+    ]
+  },
+  "selected_classification_feature_set": "age_minutes_elo",
+  "selected_classification_models": {
+    "2": "random_forest",
+    "5": "gradient_boosting"
+  },
+  "selected_survival_feature_set": "age_minutes_elo",
+  "selected_survival_model": "random_survival_forest",
+  "imputation": "training-fold median only",
+  "classification_selection_target_years": "2018-2021",
+  "classification_locked_evaluation_target_years": "2022-2023",
+  "survival_selection_origins": "2013-2014; outcomes censored at 2019",
+  "survival_locked_evaluation_origins": "2019-2020; outcomes censored at 2025",
+  "classification_task": "confirmation",
+  "classification_rows": 85135,
+  "complete_career_peak_rows_classification": 51478
+}

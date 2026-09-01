@@ -1,0 +1,5 @@
+peak_ratio_threshold,decline_required,candidate_low_seasons,confirmed_rows,first_confirmed_events,complete_career_cohort_events
+0.5,0.5,30952,10271,5839,3506
+0.6,0.4,38099,14820,7329,4343
+0.65,0.35,41827,17493,8066,4754
+0.7,0.30000000000000004,45541,20325,8714,5102

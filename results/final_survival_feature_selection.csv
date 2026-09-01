@@ -1,0 +1,7 @@
+feature_set,mean_selection_auc,minimum_selection_auc,n_features,successful_models,within_selection_tolerance,selected
+age_career,0.6802225241337889,0.6802225241337889,4,1,False,False
+age_minutes_elo,0.7072838806542414,0.7072838806542414,22,1,True,True
+age_only,0.6652924298409617,0.6652924298409617,1,1,False,False
+age_plus_minutes,0.7012256409244212,0.7012256409244212,13,1,False,False
+full_model,0.7103620676686542,0.7103620676686542,53,1,True,False
+minutes_only,0.509755738562435,0.509755738562435,1,1,False,False

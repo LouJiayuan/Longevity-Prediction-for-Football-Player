@@ -1,0 +1,5 @@
+horizon_years,comparison,n_players,mean_auc_difference,ci_lower_95,ci_upper_95,bootstrap_probability_difference_le_zero
+2,age_minutes_elo:random_forest minus age_only:logistic,3885,0.11041716841524457,0.09664545741493365,0.12446804659442133,0.000999000999000999
+2,age_minutes_elo:random_forest minus minutes_only:gradient_boosting,3885,0.2321803092858524,0.21418200060069792,0.2498556661036458,0.000999000999000999
+5,age_minutes_elo:gradient_boosting minus age_only:logistic,3295,0.053755978499520234,0.040995201424544624,0.06671863779047249,0.000999000999000999
+5,age_minutes_elo:gradient_boosting minus minutes_only:gradient_boosting,3295,0.17472412466027043,0.152607377368642,0.19889566310982462,0.000999000999000999

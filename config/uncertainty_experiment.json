@@ -1,0 +1,14 @@
+{
+  "data_end_season": 2025,
+  "selection_target_year_start": 2018,
+  "selection_target_year_end": 2021,
+  "evaluation_target_year_start": 2022,
+  "evaluation_target_year_end": 2023,
+  "final_training_target_year_end": 2023,
+  "calibration_target_year_start": 2024,
+  "calibration_target_year_end": 2025,
+  "deployment_training_target_year_end": 2025,
+  "prediction_interval_coverage": 0.9,
+  "recency_decay_per_season": 0.8,
+  "recency_decay_sensitivity": [0.7, 0.8, 0.9, 1.0]
+}
