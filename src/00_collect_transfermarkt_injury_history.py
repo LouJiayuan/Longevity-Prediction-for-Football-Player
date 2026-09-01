@@ -21,9 +21,11 @@ from bs4 import BeautifulSoup
 
 
 KIMI_DIR = Path(__file__).resolve().parents[1]
-PROJECT_DIR = KIMI_DIR
-DEFAULT_PLAYERS = PROJECT_DIR / "data" / "transfermarkt_public" / "players.csv"
-DEFAULT_OUT_DIR = PROJECT_DIR / "data" / "injuries" / "transfermarkt_collected"
+PROJECT_DIR = KIMI_DIR.parent
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else PROJECT_DIR / "data"
+DEFAULT_PLAYERS = DATA_ROOT / "transfermarkt_public" / "players.csv"
+DEFAULT_OUT_DIR = DATA_ROOT / "injuries" / "transfermarkt_collected"
 USER_AGENT = "football-longevity-dissertation/1.0 (academic research)"
 
 

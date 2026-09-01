@@ -21,11 +21,12 @@ import pandas as pd
 
 
 KIMI_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = KIMI_DIR / "data" / "processed"
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+DATA_DIR = DATA_ROOT / "processed"
 OUTPUT_DIR = KIMI_DIR / "outputs" / "verified_injury_feature_comparison"
 INJURY_PATH = (
-    KIMI_DIR.parent
-    / "data"
+    DATA_ROOT
     / "injuries"
     / "longitudinal_2000_2025"
     / "player_season_injury_features.parquet"

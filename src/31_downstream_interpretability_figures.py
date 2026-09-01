@@ -19,7 +19,9 @@ import xgboost as xgb
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-PROCESSED_DIR = BASE_DIR / "data" / "processed"
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else BASE_DIR.parent / "data"
+PROCESSED_DIR = DATA_ROOT / "processed"
 OUTPUT_DIR = BASE_DIR / "outputs"
 FIGURE_DIR = BASE_DIR / "figures"
 FIGURE_DIR.mkdir(parents=True, exist_ok=True)

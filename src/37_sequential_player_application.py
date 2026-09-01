@@ -32,7 +32,9 @@ sys.path.append(str(SCRIPT_DIR))
 from modeling_common import clean_feature_matrix, enforce_probability_bounds  # noqa: E402
 
 
-DATA_DIR = BASE_DIR / "data" / "processed"
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else BASE_DIR.parent / "data"
+DATA_DIR = DATA_ROOT / "processed"
 OUTPUT_DIR = BASE_DIR / "outputs" / "practical_application"
 CONFIG_PATH = BASE_DIR / "config" / "uncertainty_experiment.json"
 MAN_UTD_CLUB_ID = 985

@@ -28,10 +28,12 @@ import pandas as pd
 
 
 KIMI_DIR = Path(__file__).resolve().parents[1]
-PROJECT_DIR = KIMI_DIR
-INJURY_DIR = PROJECT_DIR / "data" / "injuries"
+PROJECT_DIR = KIMI_DIR.parent
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else PROJECT_DIR / "data"
+INJURY_DIR = DATA_ROOT / "injuries"
 DEFAULT_OUT_DIR = INJURY_DIR / "public_processed"
-DEFAULT_PLAYERS = PROJECT_DIR / "data" / "transfermarkt_public" / "players.csv"
+DEFAULT_PLAYERS = DATA_ROOT / "transfermarkt_public" / "players.csv"
 
 EVENT_HANDLE = "sananmuzaffarov/european-football-injuries-2020-2025"
 EVENT_FILENAME = "full_dataset_thesis - 1.csv"

@@ -20,7 +20,9 @@ from sklearn.metrics import average_precision_score, roc_auc_score
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 KIMI_DIR = SCRIPT_DIR.parent
-PROCESSED_DIR = KIMI_DIR / "data" / "processed"
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+PROCESSED_DIR = DATA_ROOT / "processed"
 OUTPUT_DIR = KIMI_DIR / "outputs"
 SENSITIVITY_SCRIPT = SCRIPT_DIR / "35_outcome_definition_and_weight_sensitivity.py"
 

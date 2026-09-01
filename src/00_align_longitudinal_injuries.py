@@ -23,9 +23,11 @@ import pandas as pd
 
 
 KIMI_DIR = Path(__file__).resolve().parents[1]
-PROJECT_DIR = KIMI_DIR
-DEFAULT_PANEL = KIMI_DIR / "data" / "processed" / "player_season_features.parquet"
-DEFAULT_OUT_DIR = PROJECT_DIR / "data" / "injuries" / "longitudinal_2000_2025"
+PROJECT_DIR = KIMI_DIR.parent
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else PROJECT_DIR / "data"
+DEFAULT_PANEL = DATA_ROOT / "processed" / "player_season_features.parquet"
+DEFAULT_OUT_DIR = DATA_ROOT / "injuries" / "longitudinal_2000_2025"
 
 DATASET_HANDLE = "xfkzujqjvx97n/football-datasets"
 DATASET_URL = f"https://www.kaggle.com/datasets/{DATASET_HANDLE}"

@@ -21,9 +21,11 @@ import pandas as pd
 
 warnings.filterwarnings('ignore')
 
-BASE_DIR = Path(__file__).resolve().parents[1]
-OUT_DIR = BASE_DIR / 'data' / 'processed'
-REPORT_DIR = BASE_DIR / 'outputs'
+KIMI_DIR = Path(__file__).resolve().parents[1]
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+OUT_DIR = DATA_ROOT / 'processed'
+REPORT_DIR = KIMI_DIR / 'outputs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 

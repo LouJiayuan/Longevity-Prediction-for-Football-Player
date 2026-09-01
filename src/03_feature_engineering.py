@@ -16,8 +16,10 @@ from classification_targets import (
 )
 warnings.filterwarnings('ignore')
 
-BASE_DIR = Path(__file__).resolve().parents[1]
-OUT_DIR = BASE_DIR / 'data' / 'processed'
+KIMI_DIR = Path(__file__).resolve().parents[1]
+# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
+DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+OUT_DIR = DATA_ROOT / 'processed'
 
 print("Loading labeled player-season data...")
 ps = pd.read_parquet(OUT_DIR / 'player_season_labeled.parquet')
