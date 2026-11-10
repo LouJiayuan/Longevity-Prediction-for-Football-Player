@@ -20,18 +20,18 @@ import numpy as np
 import pandas as pd
 
 
-KIMI_DIR = Path(__file__).resolve().parents[1]
-# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
-DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+BASE_DIR = Path(__file__).resolve().parents[1]
+# data/ 默认与代码目录同级；不存在时回退到上一级目录。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else BASE_DIR.parent / "data"
 DATA_DIR = DATA_ROOT / "processed"
-OUTPUT_DIR = KIMI_DIR / "outputs" / "verified_injury_feature_comparison"
+OUTPUT_DIR = BASE_DIR / "outputs" / "verified_injury_feature_comparison"
 INJURY_PATH = (
     DATA_ROOT
     / "injuries"
     / "longitudinal_2000_2025"
     / "player_season_injury_features.parquet"
 )
-FINAL_SCRIPT = KIMI_DIR / "scripts" / "29_final_experiment.py"
+FINAL_SCRIPT = BASE_DIR / "scripts" / "29_final_experiment.py"
 CLASSIFICATION_TASK_FILES = {
     "confirmation": "classification_confirmation_yearly.parquet",
     "early_warning": "classification_early_warning_yearly.parquet",
@@ -202,7 +202,7 @@ def cache_signature(
 
 
 def load_baseline_selection(final_module, task: str, data_path: Path, config, base_sets):
-    baseline_dir = KIMI_DIR / "outputs" / task
+    baseline_dir = BASE_DIR / "outputs" / task
     expected = final_module.classification_cache_signature(
         data_path, config, base_sets
     )

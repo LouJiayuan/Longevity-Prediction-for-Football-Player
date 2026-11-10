@@ -21,6 +21,12 @@ This folder contains aggregate tables from the corrected injury-free strict prev
   protocol, with per-task classification tables and survival deltas.
 - `practical_application/`: locked evaluation metrics and the routing audit for
   the sequential early-warning / conditional-confirmation application layer.
+- `horizon_resolved/`: classification metrics and matched permutation
+  importance for horizons 1-5, survival metrics and importance for years 1-5,
+  plus the exact check against the locked 2- and 5-year tables.
+- `conditional_confirmation/`: matched task metrics and permutation importance
+  for early warning, conditional confirmation and the explicitly labelled
+  unconditional benchmark, plus the exact check against script 37.
 
 Backward-compatible root-level `final_classification_*` aliases were removed on 1 September 2026 because they duplicated `confirmation/` byte for byte. Use the explicitly named task directories.
 

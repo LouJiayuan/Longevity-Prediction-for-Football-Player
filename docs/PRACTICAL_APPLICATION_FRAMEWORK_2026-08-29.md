@@ -166,7 +166,7 @@ of decline.
 ## 7. Club case examples
 
 The routed club case study is withheld from this public repository. Named
-player-level probabilities and the Manchester United-supplied source data fall
+player-level probabilities, the Manchester United-supplied archive and ClubElo fall
 outside the publication boundary stated in the repository README. The routing
 logic, locked diagnostics and interpretation rules in sections 3 to 6 are
 complete without them.

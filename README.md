@@ -1,6 +1,6 @@
 # Football Career Drop-off Prediction from Context-Adjusted Minutes
 
-This repository contains the reproducible code path for an academic project on forecasting sustained reductions in professional football playing time. It uses only playing-time history, age, ClubElo context and a small set of audit/availability fields. It does not use goals, assists or other performance outcomes. The Manchester United-supplied source data and player-level prediction exports are not included.
+This repository contains the reproducible code path for forecasting sustained reductions in professional football playing time from playing-time history, age, ClubElo context and audit fields, without performance outcomes. Manchester United supplied the archived `longevity0724` extract and ClubElo ratings; the frozen analysis also used independently acquired Transfermarkt tables and an author-collected historical extension. Raw data and player-level predictions are excluded.
 
 The corrected, injury-free experiment regenerated on 1 September 2026 covers 13 European first- and second-tier leagues from 2000 to 2025. It contains 3,146,714 player-match rows, 113,890 matches, 34,089 players, 148,140 player-seasons and 8,066 first confirmed events, and reports two classification questions plus survival analysis. The legacy injury CSV was a synthetic test fixture and no injury-derived field enters any final label, feature set, model or result.
 
@@ -57,6 +57,12 @@ Model and feature-set choices were frozen from the selection period. Other algor
 
 Across the 25 `alpha/beta` cells, the adjusted-trajectory AUC ranged from 0.805 to 0.810 at 2 years and 0.713 to 0.727 at 5 years; the maximum event-row flip rate was 0.41%. This is robustness evidence, not a basis for selecting parameters after observing test performance.
 
+## Horizon-resolved and conditional analyses
+
+The supplementary horizon sweep evaluates every classification horizon from 1 to 5 years while holding the selected feature set fixed. It also evaluates each survival model at years 1 to 5 without refitting the model at each time point. The 2- and 5-year classification rows reproduce the locked tables exactly; the machine-readable check is in `results/horizon_resolved/verification_vs_locked_tables.csv`.
+
+The operational confirmation question is evaluated separately among players who are already in a first low season. On the locked sequential split, the one-year conditional-confirmation model has AUC 0.654, compared with 0.639 for age alone (`n = 1,393`). This is the deployment-relevant confirmation result; the much higher one-year unconditional confirmation score is retained only as a research-benchmark comparison. Matched feature-importance tables and an exact verification against script 37 are in `results/conditional_confirmation/`.
+
 ## Verified injury-history extension
 
 The legacy `clinical` and `clinical_extended` feature sets are cancelled: they were built on a synthetic injury fixture. `src/38_verified_injury_feature_comparison.py` repeats the same temporal protocol with a ten-field block derived from an audited public Transfermarkt-ID injury history (CC0). These variables are availability-reporting proxies, not clinical records.
@@ -89,12 +95,12 @@ src/        Canonical pipeline and sensitivity scripts
 config/     League scope and temporal-validation configuration
 data/       Data contract only; raw and processed data are ignored
 results/    Small aggregate tables from the final run, the verified injury
-            extension and the sequential application layer
+            extension, horizon analyses and sequential application layer
 figures/    Aggregate visualisations for both classification tasks, the injury
             extension and sensitivity checks; no named cases
 tests/      Core target, strict-Elo and injury-alignment tests
-docs/       Method, injury-provenance, practical-application, data-access and
-            AI collaboration notes
+docs/       Method, injury-provenance, practical-application and data-access
+            notes
 ```
 
 ## Reproducing the pipeline
@@ -116,6 +122,8 @@ python src/30_final_interpretability.py --task early_warning
 python src/31_downstream_interpretability_figures.py --task confirmation
 python src/31_downstream_interpretability_figures.py --task early_warning
 python src/37_sequential_player_application.py
+python src/40_horizon_resolved_analysis.py
+python src/41_conditional_confirmation_importance.py
 pytest -q
 ```
 
@@ -131,10 +139,6 @@ Sensitivity scripts `33` to `36` are separate from the locked primary experiment
 
 Before running, read [data/README.md](data/README.md). The scripts require an authorised local copy of the raw inputs and write generated data to `data/processed/`, which is excluded from version control.
 
-## AI collaboration disclosure
-
-The researcher defined the question, controlled data access, made methodological decisions and reviewed outputs. OpenAI Codex helped inspect and refactor the pipeline, implement leakage controls and validation, run diagnostics, and prepare documentation. It was not used as an authority for scientific truth; final methodology and claims remain the researcher's responsibility. A bilingual account is available in [docs/AI_COLLABORATION_SUMMARY_CN_EN.md](docs/AI_COLLABORATION_SUMMARY_CN_EN.md).
-
 ## Data and ethical note
 
-The underlying data were supplied for dissertation research and are not redistributable. This repository includes code, configuration, aggregate results and figures only. Any reuse requires independently obtained, appropriately licensed data and a review of applicable privacy, contract and competition-data restrictions.
+Manchester United supplied the archived `longevity0724` extract and ClubElo ratings for dissertation research. Other inputs were independently acquired or collected from the sources documented here. None of the raw data are redistributed; reuse requires authorised data and review of applicable licence, privacy and contract restrictions.

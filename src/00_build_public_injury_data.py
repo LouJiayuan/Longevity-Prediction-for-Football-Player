@@ -27,10 +27,10 @@ import numpy as np
 import pandas as pd
 
 
-KIMI_DIR = Path(__file__).resolve().parents[1]
-PROJECT_DIR = KIMI_DIR.parent
-# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
-DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else PROJECT_DIR / "data"
+BASE_DIR = Path(__file__).resolve().parents[1]
+PROJECT_DIR = BASE_DIR.parent
+# data/ 默认与代码目录同级；不存在时回退到上一级目录。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else PROJECT_DIR / "data"
 INJURY_DIR = DATA_ROOT / "injuries"
 DEFAULT_OUT_DIR = INJURY_DIR / "public_processed"
 DEFAULT_PLAYERS = DATA_ROOT / "transfermarkt_public" / "players.csv"

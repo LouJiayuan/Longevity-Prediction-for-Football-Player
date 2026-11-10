@@ -2,7 +2,7 @@
 
 ## 1. Data audit and analytical population
 
-The canonical analysis includes the first and second tiers in England, Spain, Germany, Italy and France, plus the top tiers of the Netherlands, Portugal and Belgium. The modelling window is 2000-2025 because the supplied appearance database extends much further back, but usable ClubElo coverage begins in 2000. Third-tier data remain outside the primary experiment because pre-match ClubElo coverage is insufficient for the same weighting definition.
+The canonical analysis includes the first and second tiers in England, Spain, Germany, Italy and France, plus the top tiers of the Netherlands, Portugal and Belgium. Manchester United supplied the archived `longevity0724` extract and ClubElo ratings; the frozen build combined the latter with independently acquired Transfermarkt tables and an author-collected historical extension. The 2000-2025 window reflects usable ClubElo coverage. Third tiers remain outside the primary experiment because their pre-match coverage is insufficient for the same weighting definition.
 
 The rebuilt dataset contains 3,146,714 player-match rows, 113,890 matches, 34,089 players and 148,140 player-seasons. Before fallback, direct prior-day Elo coverage is 98.83% for player clubs and 98.83% for opponents. All joins, season mappings, league scope and missing-source indicators are retained for audit.
 

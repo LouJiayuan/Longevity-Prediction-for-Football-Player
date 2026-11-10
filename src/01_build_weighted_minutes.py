@@ -21,18 +21,18 @@ import numpy as np
 import pandas as pd
 
 
-KIMI_DIR = Path(__file__).resolve().parents[1]
-PROJECT_DIR = KIMI_DIR.parent
-# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
-DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else PROJECT_DIR / "data"
+BASE_DIR = Path(__file__).resolve().parents[1]
+PROJECT_DIR = BASE_DIR.parent
+# data/ 默认与代码目录同级；不存在时回退到上一级目录。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else PROJECT_DIR / "data"
 DATA_DIR = DATA_ROOT
 CANONICAL_DIR = DATA_DIR / "transfermarkt_public"
 EXTENSION_DIR = (
     DATA_DIR / "external" / "transfermarkt_two_tiers_2000_2025"
 )
 OUT_DIR = DATA_DIR / "processed"
-REPORT_DIR = KIMI_DIR / "outputs"
-CONFIG_PATH = KIMI_DIR / "config" / "match_quality_experiment.json"
+REPORT_DIR = BASE_DIR / "outputs"
+CONFIG_PATH = BASE_DIR / "config" / "match_quality_experiment.json"
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_DIR.mkdir(parents=True, exist_ok=True)

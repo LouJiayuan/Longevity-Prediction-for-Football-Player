@@ -32,11 +32,11 @@ from modeling_common import clean_feature_matrix, enforce_probability_bounds  # 
 from uncertainty_common import add_target_end_season, load_uncertainty_config  # noqa: E402
 
 
-KIMI_DIR = SCRIPT_DIR.parent
-# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
-DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+BASE_DIR = SCRIPT_DIR.parent
+# data/ 默认与代码目录同级；不存在时回退到上一级目录。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else BASE_DIR.parent / "data"
 PROCESSED_DIR = DATA_ROOT / "processed"
-OUTPUT_DIR = KIMI_DIR / "outputs"
+OUTPUT_DIR = BASE_DIR / "outputs"
 
 HORIZONS = (2, 5)
 PEAK_RATIOS = (0.50, 0.60, 0.65, 0.70)
@@ -456,12 +456,12 @@ def main() -> None:
         PROCESSED_DIR / "match_level_weighted_minutes.parquet", columns=match_columns
     )
     quality_scale = float(json.loads(
-        (KIMI_DIR / "config" / "match_quality_experiment.json").read_text(
+        (BASE_DIR / "config" / "match_quality_experiment.json").read_text(
             encoding="utf-8"
         )
     )["quality_elo_scale"])
     bounds = tuple(json.loads(
-        (KIMI_DIR / "config" / "match_quality_experiment.json").read_text(
+        (BASE_DIR / "config" / "match_quality_experiment.json").read_text(
             encoding="utf-8"
         )
     )["final_multiplier_bounds"])

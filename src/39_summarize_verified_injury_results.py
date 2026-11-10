@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 
 
-KIMI_DIR = Path(__file__).resolve().parents[1]
-RESULT_DIR = KIMI_DIR / "outputs" / "verified_injury_feature_comparison"
-FIGURE_DIR = KIMI_DIR / "figures" / "verified_injury_feature_comparison"
+BASE_DIR = Path(__file__).resolve().parents[1]
+RESULT_DIR = BASE_DIR / "outputs" / "verified_injury_feature_comparison"
+FIGURE_DIR = BASE_DIR / "figures" / "verified_injury_feature_comparison"
 
 PAIRINGS = (
     ("age_injury", "age_only"),

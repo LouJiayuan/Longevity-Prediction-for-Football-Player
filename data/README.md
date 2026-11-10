@@ -1,6 +1,6 @@
 # Data contract and access note
 
-No raw or processed data are included. The study used restricted data supplied for dissertation research; do not attempt to reconstruct or publish that dataset from this code.
+No raw or processed data are included. Manchester United supplied the archived `longevity0724` extract and ClubElo ratings; the frozen pipeline also used independently acquired Transfermarkt tables and an author-collected historical extension. Do not publish restricted inputs.
 
 To run the pipeline with independently authorised data, create these local paths. They are all ignored by Git:
 

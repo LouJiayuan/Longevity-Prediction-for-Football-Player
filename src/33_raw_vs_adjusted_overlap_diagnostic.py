@@ -21,11 +21,11 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 
-KIMI_DIR = Path(__file__).resolve().parents[1]
-# data/ 在工作区位于 kimi/ 上一层，在公开快照中与代码同级；两种布局都能解析。
-DATA_ROOT = KIMI_DIR / "data" if (KIMI_DIR / "data").is_dir() else KIMI_DIR.parent / "data"
+BASE_DIR = Path(__file__).resolve().parents[1]
+# data/ 默认与代码目录同级；不存在时回退到上一级目录。
+DATA_ROOT = BASE_DIR / "data" if (BASE_DIR / "data").is_dir() else BASE_DIR.parent / "data"
 DATA_PATH = DATA_ROOT / "processed" / "player_season_labeled.parquet"
-OUT_DIR = KIMI_DIR / "outputs"
+OUT_DIR = BASE_DIR / "outputs"
 
 PEAK_RATIO = 0.65
 MIN_HISTORY_SEASONS = 2
